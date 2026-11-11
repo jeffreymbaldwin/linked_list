@@ -13,6 +13,18 @@ RSpec.describe LinkedList do
       list.append(10)
       list.append(20)
 
+      expect(list.head.next_node.value).to eq(20)
+    end
+
+    it "adds a third node containing a value at the end of the list" do
+      list = LinkedList.new
+      list.append(10)
+      list.append(20)
+      list.append(30)
+
+      expect(list.head.next_node.next_node.value).to eq(30)
+      expect(list.head.next_node.next_node.next_node).to be_nil
+
     end
   end
   describe "#size" do
