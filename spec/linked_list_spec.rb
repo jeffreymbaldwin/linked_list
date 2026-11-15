@@ -2,7 +2,7 @@ require_relative "../lib/linked_list"
 
 RSpec.describe LinkedList do
   describe "#append" do
-    it "adds a new node containing a value to the end of the list" do
+    it "adds a new node containing a value to the list when the list is empty" do
       list = LinkedList.new
       list.append(10)
 
@@ -27,6 +27,34 @@ RSpec.describe LinkedList do
 
     end
   end
+
+  describe "#prepend" do
+    it "adds a node containing a value to the list when the list is empty" do
+      list = LinkedList.new
+      list.prepend(15)
+
+      expect(list.head.value).to eq(15)
+    end
+
+    it "when ran two times it adds each value starting at the beginning of the list" do
+      list = LinkedList.new
+      list.prepend(15)
+      list.prepend(20)
+
+      expect(list.head.value).to eq(20)
+      expect(list.head.next_node.value).to eq(15)
+    end
+
+    it "adds a value at the beginning of a list when used after append method" do
+      list = LinkedList.new
+      list.append(20)
+      list.prepend(15)
+
+      expect(list.head.value).to eq(15)
+      expect(list.head.next_node.value).to eq(20)
+    end
+  end
+
   describe "#size" do
     xit "returns 0 for an empty list" do
       list = LinkedList.new
