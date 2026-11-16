@@ -56,10 +56,62 @@ RSpec.describe LinkedList do
   end
 
   describe "#size" do
-    xit "returns 0 for an empty list" do
+    it "returns 0 for an empty list" do
       list = LinkedList.new
 
       expect(list.size).to eq(0)
     end
+
+    it "returns 1 when there is only a head" do
+      list = LinkedList.new
+      list.append(10)
+
+      expect(list.size).to eq(1)
+    end
+
+    it "returns 2 when there are 2 nodes in the list" do
+      list = LinkedList.new
+      list.append(10)
+      list.append(15)
+
+      expect(list.size).to eq(2)
+    end
   end
+
+  describe "#head" do
+    it "returns nil when the list is empty" do
+      list = LinkedList.new
+
+      expect(list.head).to be_nil
+    end
+
+    it "returns the value of the first node in the list" do
+      list = LinkedList.new
+      list.append(10)
+      list.append(20)
+
+      expect(list.head.value).to eq(10)
+    end
+  end
+
+  describe "tail" do
+    it "returns nil when the list is empty" do
+      list = LinkedList.new
+
+      expect(list.tail).to be_nil
+    end
+
+    it "returns the value of the last node in the list" do
+      list = LinkedList.new
+      list.append(10)
+      list.append(20)
+
+      expect(list.tail).to eq(20)
+    end
+  end
+
 end
+
+
+
+#head should return the value of the first node in the list. If the list is empty, it should return nil.

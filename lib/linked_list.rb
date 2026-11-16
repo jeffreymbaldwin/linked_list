@@ -29,13 +29,27 @@ class LinkedList
 
   def size
     return 0 if @head.nil?
+    current = @head
+    size = 1
+
+    while current.next_node
+      current = current.next_node
+      size += 1
+
+    end
+    size
   end
+
+  def tail
+    return if @head.nil?
+    current = @head
+    while current.next_node
+      current = current.next_node
+    end
+    current.value
+  end
+
+
 end
 
 
-# current = first
-
-# while current != nil
-#   puts current.value
-#   current = current.next_node
-# end
