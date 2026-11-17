@@ -49,6 +49,27 @@ class LinkedList
     current.value
   end
 
+  def at_index(index)
+    return nil if @head.nil?
+    return nil if index.negative?
+    current_node = @head
+    current_index  = 0
+
+    while current_index < index && current_index < index
+      current_node = current_node.next_node
+      current_index += 1
+    end
+    current_node&.value
+
+  end
+
+  def pop
+    return nil if @head.nil?
+    value = @head.value
+    @head = @head.next_node
+    value
+  end
+
 
 end
 

@@ -110,8 +110,87 @@ RSpec.describe LinkedList do
     end
   end
 
+  describe "at_index" do
+    it "returns the value of the given index of a list" do
+      list = LinkedList.new
+      list.append(10)
+      list.append(20)
+
+      expect(list.at_index(1)).to eq(20)
+    end
+
+    it "returns nil if the list is empty" do
+      list = LinkedList.new
+
+      expect(list.at_index(0)).to be_nil
+    end
+
+    it "returns the value of the node for the given index" do
+      list = LinkedList.new
+      list.append(10)
+      list.append(20)
+
+      expect(list.at_index(1)).to eq(20)
+    end
+
+    it "returns nil if an index is given for and index that doesn't exist" do
+      list = LinkedList.new
+      list.append(10)
+      list.append(20)
+
+      expect(list.at_index(2)).to be_nil
+    end
+
+    it "returns nil if the given index is negative" do
+      list = LinkedList.new
+      list.append(10)
+
+      expect(list.at_index(-1)).to be_nil
+    end
+  end
+  describe "#pop" do
+    it "returns nil if called on an empty list" do
+      list = LinkedList.new
+
+      expect(list.pop).to be_nil
+    end
+
+    it "returns the node and the list is empty after calling pop on a 0 index list" do
+      list = LinkedList.new
+      list.append(10)
+
+      expect(list.pop).to eq(10)
+      expect(list.head).to be_nil
+    end
+
+    it "removes the head from the list and returns that node's value" do
+      list = LinkedList.new
+      list.append(10)
+      list.append(20)
+      list.append(30)
+
+      value = list.head.value
+
+      expect(list.pop).to eq(10)
+      expect(list.head.value).to eq(20)
+    end
+
+    it "can be called twice to remove two heads while maintaining the flow of the list" do
+      list = LinkedList.new
+      list.append(10)
+      list.append(20)
+      list.append(30)
+
+      expect(list.pop).to eq(10)
+
+      expect(list.pop).to eq(20)
+
+      expect(list.head.value).to eq(30)
+      expect(list.head.next_node).to be_nil
+    end
+  end
+
 end
 
 
 
-#head should return the value of the first node in the list. If the list is empty, it should return nil.
