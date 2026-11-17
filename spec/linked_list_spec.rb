@@ -169,8 +169,6 @@ RSpec.describe LinkedList do
       list.append(20)
       list.append(30)
 
-      value = list.head.value
-
       expect(list.pop).to eq(10)
       expect(list.head.value).to eq(20)
     end
@@ -182,11 +180,33 @@ RSpec.describe LinkedList do
       list.append(30)
 
       expect(list.pop).to eq(10)
-
       expect(list.pop).to eq(20)
-
       expect(list.head.value).to eq(30)
       expect(list.head.next_node).to be_nil
+    end
+  end
+
+  describe "#contains?" do
+    it "returns nil if the list is empty" do
+      list = LinkedList.new
+
+      expect(list.contains?(10)).to eq(false)
+    end
+
+    it "returns true if the list contains the value" do
+      list = LinkedList.new
+      list.append(10)
+      list.append(20)
+
+      expect(list.contains?(20)).to eq(true)
+    end
+
+    it "returns true if the list doesn't contain the value" do
+      list = LinkedList.new
+      list.append(10)
+      list.append(20)
+
+      expect(list.contains?(30)).to eq(false)
     end
   end
 
