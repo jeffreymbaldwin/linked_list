@@ -210,6 +210,47 @@ RSpec.describe LinkedList do
     end
   end
 
+  describe "#index" do
+    it "returns nil if the list is empty" do
+      list = LinkedList.new
+
+      expect(list.index(10)).to be_nil
+    end
+
+    it "returns the index of the node containing the value" do
+      list = LinkedList.new
+      list.append(10)
+      list.append(20)
+
+      expect(list.index(10)).to eq(0)
+    end
+
+    it "returns the index of the node containing the value when the index is not 0" do
+      list = LinkedList.new
+      list.append(10)
+      list.append(20)
+
+      expect(list.index(20)).to eq(1)
+    end
+
+    it "returns nil when the value is not in the list" do
+      list = LinkedList.new
+      list.append(10)
+      list.append(20)
+
+      expect(list.index(30)).to be_nil
+    end
+
+    it "returns the first value when the value is in the list multiple times" do
+      list = LinkedList.new
+      list.append(10)
+      list.append(20)
+      list.append(20)
+
+      expect(list.index(20)).to eq(1)
+    end
+
+  end
 end
 
 
