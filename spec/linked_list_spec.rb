@@ -251,6 +251,29 @@ RSpec.describe LinkedList do
     end
 
   end
+
+  describe "#to_s" do
+    it "returns an empty string" do
+      list = LinkedList.new
+
+      expect(list.to_s).to eq("")
+    end
+
+    it "returns 1 value and nil as strings" do
+      list = LinkedList.new
+      list.append(10)
+
+      expect(list.to_s).to eq("( 10 ) -> nil")
+    end
+
+    it "returns 2 values and nil as strings" do
+      list = LinkedList.new
+      list.append(10)
+      list.append(20)
+
+      expect(list.to_s).to eq("( 10 ) -> ( 20 ) -> nil")
+    end
+  end
 end
 
 
